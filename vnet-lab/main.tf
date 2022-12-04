@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "example" {
 }
 
 module "vnet" {
-  source              = "../vnet-module"
+  source              = "../modulo-vnet"
   resource_group_name = azurerm_resource_group.example.name
   vnet_location       = "East US"
 }
