@@ -1,0 +1,5 @@
+-- Onde armazenar o statefile na nuvem azure?
+
+-- Comandos adicionais do terraform (que estão na doc -> https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build)
+
+-- começar os testes de fato
