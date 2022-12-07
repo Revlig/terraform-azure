@@ -73,13 +73,13 @@ variable "subnet_enforce_private_link_service_network_policies" {
 variable "subnet_names" {
   description = "A list of public subnets inside the vNet."
   type        = list(string)
-  default     = ["subnet1", "subnet2", "subnet3"]
+  default     = ["subnetdefault"]
 }
 
 variable "subnet_prefixes" {
   description = "The address prefix to use for the subnet."
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  default     = ["10.0.0.0/24"]
 }
 
 variable "subnet_service_endpoints" {
@@ -101,4 +101,67 @@ variable "vnet_name" {
   description = "Name of the vnet to create"
   type        = string
   default     = "acctvnet"
+}
+
+variable "nsg_name" {
+  type    = string
+  default = "acceptanceTestSecurityGroup1"
+}
+
+variable "nsg_sec_rule_name" {
+  type    = string
+  default = "test123"
+}
+
+variable "nsg_sec_rule_priority" {
+  type    = number
+  default = 100
+}
+
+variable "nsg_sec_rule_direction" {
+  type    = string
+  default = "Inbound"
+}
+
+variable "nsg_sec_rule_access" {
+  type    = string
+  default = "Allow"
+}
+
+variable "nsg_sec_rule_protocol" {
+  type    = string
+  default = "Tcp"
+}
+
+variable "nsg_sec_rule_source_port_range" {
+  type    = string
+  default = "*"
+}
+
+variable "nsg_sec_rule_destination_port_range" {
+  type    = string
+  default = "*"
+}
+
+variable "nsg_sec_rule_source_address_prefix" {
+  type    = string
+  default = "*"
+}
+
+variable "nsg_sec_rule_destination_address_prefix" {
+  type    = string
+  default = "*"
+}
+
+variable "nsg_tag" {
+  type    = string
+  default = "lab"
+}
+
+variable "nsg_rg_location" {
+  type = string
+}
+
+variable "nsg_rg_name" {
+  type = string
 }
