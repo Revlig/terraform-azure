@@ -18,9 +18,9 @@ output "vnet_name" {
   value       = azurerm_virtual_network.this.name
 }
 
-output "vnet_subnets" {
+output "public_vnet_subnets" {
   description = "The ids of subnets created inside the newly created vNet"
-  value       = azurerm_subnet.this[*].id
+  value       = azurerm_subnet.public[*].id
 }
 
 #output "vnet_subnets_name_id" {

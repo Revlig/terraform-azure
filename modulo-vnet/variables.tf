@@ -70,7 +70,7 @@ variable "subnet_enforce_private_link_service_network_policies" {
   default     = {}
 }
 
-variable "subnet_names" {
+variable "public_subnet_names" {
   description = "A list of public subnets inside the vNet."
   type        = list(string)
   default     = ["subnetdefault"]
@@ -108,47 +108,47 @@ variable "nsg_name" {
   default = "acceptanceTestSecurityGroup1"
 }
 
-variable "nsg_sec_rule_name" {
+variable "sec_rule_name" {
   type    = string
   default = "test123"
 }
 
-variable "nsg_sec_rule_priority" {
+variable "sec_rule_priority" {
   type    = number
   default = 100
 }
 
-variable "nsg_sec_rule_direction" {
+variable "sec_rule_direction" {
   type    = string
   default = "Inbound"
 }
 
-variable "nsg_sec_rule_access" {
+variable "sec_rule_access" {
   type    = string
   default = "Allow"
 }
 
-variable "nsg_sec_rule_protocol" {
+variable "sec_rule_protocol" {
   type    = string
   default = "Tcp"
 }
 
-variable "nsg_sec_rule_source_port_range" {
+variable "sec_rule_source_port_range" {
   type    = string
   default = "*"
 }
 
-variable "nsg_sec_rule_destination_port_range" {
+variable "sec_rule_destination_port_range" {
   type    = string
   default = "*"
 }
 
-variable "nsg_sec_rule_source_address_prefix" {
+variable "sec_rule_source_address_prefix" {
   type    = string
   default = "*"
 }
 
-variable "nsg_sec_rule_destination_address_prefix" {
+variable "sec_rule_destination_address_prefix" {
   type    = string
   default = "*"
 }
@@ -163,5 +163,9 @@ variable "nsg_rg_location" {
 }
 
 variable "nsg_rg_name" {
+  type = string
+}
+
+variable "sec_rule_description" {
   type = string
 }
