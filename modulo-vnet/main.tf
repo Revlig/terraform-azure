@@ -20,7 +20,7 @@ resource "azurerm_virtual_network" "this" {
 resource "azurerm_subnet" "public" {
   count = length(var.public_subnet_names)
 
-  address_prefixes                              = [var.subnet_prefixes[count.index]]
+  address_prefixes                              = [var.public_subnet_prefixes[count.index]]
   name                                          = var.public_subnet_names[count.index]
   resource_group_name                           = var.resource_group_name
   virtual_network_name                          = azurerm_virtual_network.this.name
@@ -53,16 +53,18 @@ resource "azurerm_network_security_group" "this" {
 }
 
 resource "azurerm_network_security_rule" "public_inbound" {
-  name                        = var.sec_rule_name
-  description                 = var.sec_rule_description
-  priority                    = var.sec_rule_priority
-  direction                   = var.sec_rule_direction
-  access                      = var.sec_rule_access
-  protocol                    = var.sec_rule_protocol
-  source_port_range           = var.sec_rule_source_port_range
-  destination_port_range      = var.sec_rule_destination_port_range
-  source_address_prefix       = var.sec_rule_source_address_prefix
-  destination_address_prefix  = var.sec_rule_destination_address_prefix
+  count = length(var.public_inbound_nsg_rules)
+
+  name                        = var.public_inbound_nsg_rules[count.index]["name"]
+  description                 = var.public_inbound_nsg_rules[count.index]["description"]
+  priority                    = var.public_inbound_nsg_rules[count.index]["priority"]
+  direction                   = var.public_inbound_nsg_rules[count.index]["direction"]
+  access                      = var.public_inbound_nsg_rules[count.index]["access"]
+  protocol                    = var.public_inbound_nsg_rules[count.index]["protocol"]
+  source_port_range           = lookup(var.public_inbound_nsg_rules[count.index], "source_port_range", null)
+  destination_port_range      = lookup(var.public_inbound_nsg_rules[count.index], "destination_port_range", null)
+  source_address_prefix       = lookup(var.public_inbound_nsg_rules[count.index], "source_address_prefix", null)
+  destination_address_prefix  = lookup(var.public_inbound_nsg_rules[count.index], "destination_address_prefix", null)
   resource_group_name         = azurerm_network_security_group.this.resource_group_name
   network_security_group_name = azurerm_network_security_group.this.name
 }

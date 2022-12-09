@@ -76,8 +76,8 @@ variable "public_subnet_names" {
   default     = ["subnetdefault"]
 }
 
-variable "subnet_prefixes" {
-  description = "The address prefix to use for the subnet."
+variable "public_subnet_prefixes" {
+  description = "The address prefix to use for the public subnet."
   type        = list(string)
   default     = ["10.0.0.0/24"]
 }
@@ -108,51 +108,6 @@ variable "nsg_name" {
   default = "acceptanceTestSecurityGroup1"
 }
 
-variable "sec_rule_name" {
-  type    = string
-  default = "test123"
-}
-
-variable "sec_rule_priority" {
-  type    = number
-  default = 100
-}
-
-variable "sec_rule_direction" {
-  type    = string
-  default = "Inbound"
-}
-
-variable "sec_rule_access" {
-  type    = string
-  default = "Allow"
-}
-
-variable "sec_rule_protocol" {
-  type    = string
-  default = "Tcp"
-}
-
-variable "sec_rule_source_port_range" {
-  type    = string
-  default = "*"
-}
-
-variable "sec_rule_destination_port_range" {
-  type    = string
-  default = "*"
-}
-
-variable "sec_rule_source_address_prefix" {
-  type    = string
-  default = "*"
-}
-
-variable "sec_rule_destination_address_prefix" {
-  type    = string
-  default = "*"
-}
-
 variable "nsg_tag" {
   type    = string
   default = "lab"
@@ -166,6 +121,7 @@ variable "nsg_rg_name" {
   type = string
 }
 
-variable "sec_rule_description" {
-  type = string
+variable "public_inbound_nsg_rules" {
+  description = "Public subnets inbound network security group rules"
+  type        = list(map(string))
 }

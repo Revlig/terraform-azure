@@ -1,3 +1,4 @@
 -- Comandos adicionais do terraform (que estão na doc -> https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build)
 
--- Criar multiplas sec rules utilizando um único bloco
+-- Adicionar outbounds sec rules (para testar o concat)
+-- Multiplas Tags
